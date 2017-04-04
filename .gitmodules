@@ -1,0 +1,3 @@
+[submodule "snap/plugins"]
+	path = snap/plugins
+	url = git@github.com:fuzeman/snap-plugins.git
