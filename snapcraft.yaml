@@ -1,6 +1,6 @@
 name: orangepi-zero-kernel
 summary: Minimal kernel for the Orange Pi Zero
-version: 4.10.8-alpha.1
+version: 4.10.0-2000.1
 type: kernel
 
 description: |
@@ -17,7 +17,7 @@ parts:
         plugin: fm-kernel
 
         source: https://github.com/fuzeman/linux-ubuntu-zesty.git
-        source-commit: b3793a6ca016740dc3393a873e01b8a5a835b970
+        source-tag: Ubuntu-sunxi-4.10.0-2000.1
         source-depth: 1
         source-type: git
 
@@ -26,8 +26,10 @@ parts:
         kdefconfig: ['--makefile=debian/snapcraft.mk', 'branch=sunxi','flavour=orangepi-zero', 'config']
         kernel-image-target: zImage
 
+        fm-kernel-flavour: orangepi-zero
+        fm-kernel-version: 4.10.0-2000.1
+
         kconfigs:
-          - CONFIG_LOCALVERSION="-orangepi-zero"
           - CONFIG_SQUASHFS=m
           - CONFIG_DEVPTS_MULTIPLE_INSTANCES=y
 
