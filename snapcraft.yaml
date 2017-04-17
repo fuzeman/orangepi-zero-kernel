@@ -14,7 +14,7 @@ grade: devel
 
 parts:
     kernel:
-        plugin: kernel
+        plugin: fm-kernel
 
         source: https://github.com/fuzeman/linux-ubuntu-zesty.git
         source-commit: b3793a6ca016740dc3393a873e01b8a5a835b970
