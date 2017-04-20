@@ -1,0 +1,32 @@
+language: generic
+sudo: required
+services:
+- docker
+script:
+- docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/build.sh armhf"
+before_deploy:
+- .travis/decrypt.sh
+deploy:
+- provider: releases
+  skip_cleanup: true
+  file: "*.snap"
+  file_glob: true
+  api_key:
+    secure: UjQ26BRF+DN3B91iFapWFCKFzGn26J9Neqmto1HKIdLNkqrhy52VP4CBcMLDMrV0LdHx6Xr1ykY533qL40sg1TN10fPMtlxowsIMwmR712m9Epicoo9okE8PIKUCVHe3U0d93+kUurKowvtZw3DNjsfuvRAshbiNiIAQ0r9MAId1O7D6yBAqtF9s+LN1Gv1y/+FcW1CVgTi5Fgwoy+qAigszvm52MFrNHY/4N55Eo7SQRqLT3IFJxX/im0IB9o0sgNHwzZ6zn4nnDQM7oEaUWED8FxxfT3LGEoohQ03NrUeV0sB3ghxQyyO3vau7PoDlGGGia3z486H5aTLwY/dCp9eTtk8KmhRifVC7+vZ4h/YGCX4Ck+ppb95BpIZd49hWVBE5k89jNYNzSCns+u7sQx8eCwqT8457+r67vnIuSYOjTaJ7n4Pd0AWnj6IqEZWmZbVe7sj8v3eHEdfnkwj1Kyb1Qi4vxyfD00lSb2Q7XoRO3zW213nK/sVLNnj8WK5HQTt0Ezp+XsSi8DkWJS3WHnvoBBl3788Uu0EPJ8a5thqLv9mZterfk3suC47Su6xqkjP9h0qlYWF9/pjptuva/eZsJh9RyidOrHbLbtoHlLJL7JBuC+q+rZaM6YaKTVUUoK840b2Sv13z5qpvc5NQ/EYccx3qmlky4PKpynpTndA=
+  on:
+    repo: fuzeman/orangepi-zero-kernel
+    tags: true
+- provider: script
+  skip_cleanup: true
+  script:
+  - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh $TRAVIS_TAG"
+  on:
+    repo: fuzeman/orangepi-zero-kernel
+    tags: true
+#- provider: script
+#  skip_cleanup: true
+#  script:
+#  - docker run -v $(pwd):$(pwd) -t ubuntu:yakkety sh -c "cd $(pwd) && .travis/push.sh"
+#  on:
+#    repo: fuzeman/orangepi-zero-kernel
+#    branch: master
