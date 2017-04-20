@@ -1,6 +1,6 @@
 name: orangepi-zero-kernel
 summary: Minimal kernel for the Orange Pi Zero
-version: 4.10.0-2000.1-beta.1
+version: 4.10.0-2000.1-beta.2
 type: kernel
 
 description: |
