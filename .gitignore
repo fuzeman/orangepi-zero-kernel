@@ -3,4 +3,5 @@
 /stage
 
 *.iml
+*.log
 *.snap
