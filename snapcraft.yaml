@@ -1,6 +1,6 @@
 name: orangepi-zero-kernel
 summary: Minimal kernel for the Orange Pi Zero
-version: 4.10.0-2000.1-beta.2
+version: 4.10.0-2001.2-beta.1
 type: kernel
 
 description: |
@@ -17,7 +17,7 @@ parts:
         plugin: fm-kernel
 
         source: https://github.com/fuzeman/linux-ubuntu-zesty.git
-        source-tag: Ubuntu-sunxi-4.10.0-2000.1
+        source-tag: Ubuntu-sunxi-4.10.0-2001.2
         source-depth: 1
         source-type: git
 
